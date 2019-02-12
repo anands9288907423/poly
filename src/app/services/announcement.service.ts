@@ -19,4 +19,5 @@ export class AnnouncementService {
     console.log("the value change service is loaded");
     return this.announcement;
   }
+
 }

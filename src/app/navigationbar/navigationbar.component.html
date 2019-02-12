@@ -1,11 +1,11 @@
 <nav class="navbar navbar-dark navbar-expand-md" style="font-weight:600;">
-  <div class="container-fluid"><a class="navbar-brand" href="#">POLY BANK</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+  <div class="container-fluid"><a class="navbar-brand">POLY BANK</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse"
           id="navcol-1">
           <ul class="nav navbar-nav mx-auto">
               <li class="nav-item" role="presentation"><a class="nav-link active" routerLink="/home">HOME</a></li>
               <li class="nav-item" role="presentation"><a class="nav-link" href="#">QUESTIONS</a></li>
-              <li class="nav-item" role="presentation"><a class="nav-link" href="#">NOTES</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" [routerLink]="['/pdfs']" routerLinkActive="router-link-active" >NOTES</a></li>
               <li class="nav-item" role="presentation"><a class="nav-link" href="#">ANNOUNCEMENT</a></li>
           </ul>
           <ul class="nav navbar-nav">

@@ -23,6 +23,7 @@ import { InfocollectComponent } from './infocollect/infocollect.component';
 import { UserinfoService } from './services/userinfo.service';
 import { MessageComponent } from './message/message.component';
 import { PdfsComponent } from './pdfs/pdfs.component';
+import { PdfsService } from './services/pdfs.service';
 const appRoutes: Routes = [{
   path:'login',
   component : LoginComponent
@@ -81,7 +82,8 @@ const appRoutes: Routes = [{
     ReminderService,
     AuthService,
     AnnouncementService,
-    UserinfoService
+    UserinfoService,
+    PdfsService
   ],
   bootstrap: [AppComponent]
 })

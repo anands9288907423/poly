@@ -13,7 +13,7 @@
 <div class="col-md-4 inputGroupContainer">
 <div class="input-group">
 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-<input  name="first_name" placeholder="First Name" class="form-control"  type="text"  value="{{ Userinfo.firstname }}"/>
+<input  name="first_name" placeholder="First Name" class="form-control"  type="text" [(ngModel)]="Userinfo.firstname" />
   </div>
 </div>
 </div>
@@ -25,7 +25,7 @@
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-<input name="last_name" placeholder="Last Name" class="form-control"  type="text" value="{{Userinfo.lastname}}">
+<input name="last_name" placeholder="Last Name" class="form-control"  type="text" [(ngModel)]="Userinfo.lastname">
   </div>
 </div>
 </div>
@@ -49,7 +49,7 @@
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-<input name="phone" placeholder="(91)555-1212" class="form-control" type="text" value="{{Userinfo.phone}}">
+<input name="phone" placeholder="(91)555-1212" class="form-control" type="text" [(ngModel)]="Userinfo.phone">
   </div>
 </div>
 </div>
@@ -60,7 +60,7 @@
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-        <textarea class="form-control" name="comment" placeholder="Project Description" >{{Userinfo.about}}</textarea>
+        <textarea class="form-control" name="comment" placeholder="Project Description" [(ngModel)]="Userinfo.about"></textarea>
 </div>
 </div>
 </div>
@@ -72,7 +72,7 @@
 <div class="form-group">
 <label class="col-md-4 control-label"></label>
 <div class="col-md-4">
-  <button type="submit" class="btn btn-warning" >Continue <span class="glyphicon glyphicon-upload"></span></button>
+  <button type="submit" class="btn btn-warning" (click)="handleClick($event)">Continue <span class="glyphicon glyphicon-upload"></span></button>
 </div>
 </div>
 
