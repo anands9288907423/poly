@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+import { Router } from '../../../node_modules/@angular/router';
+import { UserinfoService } from './userinfo.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public user: Observable<firebase.User>;
   userDetails: firebase.User = null;
-  constructor(private firebaseAuth: AngularFireAuth) {
+  constructor(private firebaseAuth: AngularFireAuth,private router: Router) {
     this.user = firebaseAuth.authState;
   }
 
@@ -27,8 +29,10 @@ export class AuthService {
   signInWithGoogle() {
     console.log("it called");
     return this.firebaseAuth.auth.signInWithPopup(
-      new firebase.auth.GoogleAuthProvider()
-    )
+      new firebase.auth.GoogleAuthProvider()).then((data)=>{
+        console.log(data);
+        this.router.navigate(['/review',data.user.uid]);
+      });
   }
   login(email: string, password: string) {
     this.firebaseAuth
@@ -41,15 +45,15 @@ export class AuthService {
         console.log('Something went wrong:',err.message);
       });
   }
+
   signInWithFacebook() {
-  
     console.log("facebook login called ");
     this.firebaseAuth.auth.signInWithPopup(
       new firebase.auth.FacebookAuthProvider()).then(function(result){
         var accesstoken = result.credential;
         console.log(accesstoken);
         
-      })
+      });
   }
   isLoggedIn() {
     if (this.userDetails == null ) {

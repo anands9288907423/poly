@@ -1,6 +1,8 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
+import { UserinfoService } from '../services/userinfo.service';
+import { Routes, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,6 +14,7 @@ export class LoginComponent implements OnInit {
   password: string;
 
   constructor(public authService: AuthService) {
+    //testing porpose
     this.logio = false;
   }
 
@@ -32,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
   signInWithGoogle(){
     this.authService.signInWithGoogle();
+   
   }
   signupbtn(){
     this.logio = true;

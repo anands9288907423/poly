@@ -9,13 +9,14 @@ import { Observable } from 'rxjs';
 export class AnnouncementService {
   collectionref:AngularFirestoreCollection<Announcement>;
   announcement:Observable<Announcement[]>;
-  constructor(private afs:AngularFirestore) { 
-    this.collectionref = afs.collection('announcement');
+  constructor(public afs:AngularFirestore) { 
+    
+  }
+  getItems(){
+    this.collectionref = this.afs.collection('announcement');
     this.announcement = this.collectionref.valueChanges();
     //do this in the announcement component
     console.log("the value change service is loaded");
-  }
-  getItems(){
     return this.announcement;
   }
 }

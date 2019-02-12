@@ -20,16 +20,32 @@ import { ProfileinfoComponent } from './profileinfo/profileinfo.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoadingComponent } from './loading/loading.component';
 import { InfocollectComponent } from './infocollect/infocollect.component';
+import { UserinfoService } from './services/userinfo.service';
+import { MessageComponent } from './message/message.component';
+import { PdfsComponent } from './pdfs/pdfs.component';
 const appRoutes: Routes = [{
   path:'login',
-  component : InfocollectComponent
+  component : LoginComponent
 },{
   path :'profile',
   component : ProfileinfoComponent
 },{
   path :'home',
   component : BottomComponent
-},{
+},
+{
+  path : 'review/:uid',
+  component : InfocollectComponent
+},
+{
+  path : 'message',
+  component : MessageComponent
+},
+{
+  path : 'pdfs',
+  component : PdfsComponent
+}
+,{
   path:'',
   component : BottomComponent
 }]
@@ -45,6 +61,8 @@ const appRoutes: Routes = [{
     ProfileinfoComponent,
     LoadingComponent,
     InfocollectComponent,
+    MessageComponent,
+    PdfsComponent,
 
   ],
   imports: [
@@ -62,7 +80,8 @@ const appRoutes: Routes = [{
   providers: [
     ReminderService,
     AuthService,
-    AnnouncementService
+    AnnouncementService,
+    UserinfoService
   ],
   bootstrap: [AppComponent]
 })

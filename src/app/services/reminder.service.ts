@@ -9,7 +9,18 @@ import { AngularFirestore,AngularFirestoreDocument,AngularFirestoreCollection } 
 export class ReminderService {
   remindercollection : AngularFirestoreCollection<Reminder>;
   reminder : Observable<Reminder[]>;
-  constructor(private afs:AngularFirestore){
+  constructor(public afs:AngularFirestore){
+  
+// the working upload syntax to the firebase collection
+// let theupload:Reminder = {
+//   date:"anand",
+//   reminder:"this is for uploaded text field",
+//   id:"254"
+// }
+// this.remindercollection.add(theupload);
+// console.log("the uploading is called");
+}
+getItems(){
   this.remindercollection= this.afs.collection('remider'
   // ,(date) => date.limit(5).orderBy('date')
   );
@@ -21,17 +32,6 @@ export class ReminderService {
       return data;
     })
   });
-// the working upload syntax to the firebase collection
-// let theupload:Reminder = {
-//   date:"anand",
-//   reminder:"this is for uploaded text field",
-//   id:"254"
-// }
-// this.remindercollection.add(theupload);
-// console.log("the uploading is called");
-
-}
-getItems(){
   return this.reminder;
 }
 }
