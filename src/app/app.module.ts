@@ -24,6 +24,9 @@ import { UserinfoService } from './services/userinfo.service';
 import { MessageComponent } from './message/message.component';
 import { PdfsComponent } from './pdfs/pdfs.component';
 import { PdfsService } from './services/pdfs.service';
+import { ImguploadService } from './services/imgupload.service';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 const appRoutes: Routes = [{
   path:'login',
   component : LoginComponent
@@ -67,6 +70,7 @@ const appRoutes: Routes = [{
 
   ],
   imports: [
+    
     AngularFireModule.initializeApp(environment.firebase,'angularfs'),
     AngularFirestoreModule,
     BrowserModule,
@@ -76,14 +80,17 @@ const appRoutes: Routes = [{
     RouterModule.forRoot(
       appRoutes,
        // <-- debugging purposes only
-    )
+    ),
+    AngularFireStorageModule,
+    NgbModule.forRoot()
   ],
   providers: [
     ReminderService,
     AuthService,
     AnnouncementService,
     UserinfoService,
-    PdfsService
+    PdfsService,
+    ImguploadService
   ],
   bootstrap: [AppComponent]
 })

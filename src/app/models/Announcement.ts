@@ -4,4 +4,5 @@ export interface Announcement{
     message?:string;
     photourl?:string;
     userid?:string;
+    subtitle:string;
 }
