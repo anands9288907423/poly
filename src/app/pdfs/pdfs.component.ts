@@ -11,8 +11,12 @@ import { AngularFirestore } from 'angularfire2/firestore';
   styleUrls: ['./pdfs.component.css']
 })
 export class PdfsComponent implements OnInit {
+  title:string="";
+  description:string="";
   public pdfs : Pdfs[];
+  public pdf:Pdfs[];
   link : string;
+  status:boolean=false;
   //testing injection 2
 // Main task
 task: AngularFireUploadTask;
@@ -38,6 +42,8 @@ downloadURL: Observable<string>;
 //test
 startUpload(event: FileList) {
   // The File object
+  console.log(event);
+  
   const file = event.item(0);
 
   // Client-side validation example
@@ -60,18 +66,22 @@ startUpload(event: FileList) {
     tap(snap => {
       if (snap.bytesTransferred === snap.totalBytes) {
         //Update firestore on completion
-        // this.downloadURL = this.storage.ref(path).getDownloadURL();
+
       
       }
     }),
     finalize(() => {
-      
+      this.downloadURL = this.storage.ref(path).getDownloadURL();
+      console.log("ya data uploaded ");
+      this.downloadURL.subscribe((data)=>{
+        this.db.collection('pdfs').add({ description : this.description ,
+        title : this.title,
+        url : data});
+        console.log(this.description,this.title,data);
+        
+      })
     })
   );
-  this.snapshot.subscribe((data)=>{
-    console.log(data);
-    
-  })
   // this.downloadURL = this.storage.ref(path).getDownloadURL().map((data)=>{return data+"?alt=media";});
   // this.downloadURL.subscribe((data)=>{
   //   console.log(data);
@@ -80,5 +90,15 @@ startUpload(event: FileList) {
 
   // The file's download URL
 }
-
+toggleclass(){
+  this.status = (!this.status);
+}
+titleset(value) {
+  this.title = value.target.value;
+  
+}
+descriptionset(value){
+console.log(value);
+this.description = value.target.value;
+}
 }

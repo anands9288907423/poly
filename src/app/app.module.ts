@@ -27,6 +27,8 @@ import { PdfsService } from './services/pdfs.service';
 import { ImguploadService } from './services/imgupload.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { PostsComponent } from './posts/posts.component';
+import { UploadPageComponent } from './upload-page/upload-page.component';
 const appRoutes: Routes = [{
   path:'login',
   component : LoginComponent
@@ -46,8 +48,16 @@ const appRoutes: Routes = [{
   component : MessageComponent
 },
 {
+  path : 'posts',
+  component : PostsComponent
+},
+{
   path : 'pdfs',
   component : PdfsComponent
+},
+{
+  path : 'upload',
+  component : UploadPageComponent
 }
 ,{
   path:'',
@@ -67,7 +77,8 @@ const appRoutes: Routes = [{
     InfocollectComponent,
     MessageComponent,
     PdfsComponent,
-
+    PostsComponent,
+    UploadPageComponent
   ],
   imports: [
     

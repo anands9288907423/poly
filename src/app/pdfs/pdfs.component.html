@@ -1,5 +1,5 @@
 <!-- the test -->
-<input type="file" name="upload" (change)="startUpload($event.target.files)"/> 
+
 <ul class="cards">
   <li class="cards__item"  *ngFor="let item of pdfs">
     <div class="card">
@@ -7,8 +7,54 @@
       <div class="card__content">
         <div class="card__title">{{item.title}}</div>
         <p class="card__text">{{item.description}}</p>
-        <button class="btn btn--block card__btn">Download</button>
+        <a [href]="item.url"  class="btn btn--block card__btn">Download</a>
       </div>
     </div>
   </li>
 </ul>
+
+<div *ngIf="(snapshot | async) as snap">
+  {{ snap.bytesTransferred }} of {{ snap.totalBytes }}
+
+
+  <div *ngIf="downloadURL | async as url">
+    <h3>Results!</h3>
+    <img [src]="url">
+    <br>
+    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+  </div>
+  <hr>
+
+
+
+
+
+
+  <button (click)="task.pause()" class="button is-warning">Pause</button>
+  <button (click)="task.cancel()" class="button is-danger">Cancel</button>
+  <button (click)="task.resume()" class="button is-info" >Resume</button>
+</div>
+
+
+<div class='wrap  bg-primary' [ngClass]="status ? 'active' : 'danger'">
+  <div class='content'>
+      <form>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="short text" (keyup)="titleset($event)" >
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1"  >Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" (keyup)="descriptionset($event)" rows="3"></textarea>
+          </div>
+          <form>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Your file</label>
+                <input type="file" name="upload" (change)="startUpload($event.target.files)"/>
+              </div>
+            </form>
+        </form>
+
+  </div>
+</div>
+<a class='button glyphicon glyphicon-plus ' (click)="toggleclass()" [ngClass]="status ? 'active' : 'danger'"></a>

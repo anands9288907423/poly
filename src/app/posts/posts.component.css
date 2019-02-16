@@ -1,0 +1,120 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 95vh;
+    font-family: Dosis;
+    background-color: #a147d4;
+  }
+  .post-box {
+    width: 450px;
+    height: 600px;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 15px;
+    box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.15);
+  }
+  .post-box .user-box {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    width: 80%;
+    height: 60px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #a147d4;
+  }
+  .post-box .user-box .user-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    text-align: left;
+  }
+  .post-box .user-box .user-area a {
+    text-decoration: none;
+    color: #a147d4;
+  }
+  .post-box .user-box .user-area img {
+    margin: 10px;
+  }
+  .post-box .user-box .days p {
+    text-align: right;
+    margin-right: 45px;
+    font-size: 14px;
+  }
+  .post-box .content {
+    margin: auto;
+    width: 80%;
+    height: 120px;
+    text-align: left;
+    margin-top: -35px;
+    margin-bottom: 10px;
+  }
+  .post-box .content h3 {
+    color: #a147d4;
+    font-size: 34px;
+  }
+  .post-box .content p {
+    color: #a147d4;
+    font-size: 14px;
+    margin-top: -30px;
+  }
+  .post-box .image-box {
+    position: relative;
+  }
+  .post-box .image-box img {
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 10%;
+    width: 350px;
+  }
+  .post-box .image-box .bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    top: 80%;
+    left: 12%;
+    width: 72%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+  }
+  .post-box .image-box .icons {
+    display: flex;
+    flex-direction: row;
+  }
+  .post-box .image-box .icons svg {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    transition: 0.5s;
+  }
+  .post-box .image-box .icons svg:hover {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+  .post-box .image-box .read-content button {
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    overflow: none;
+    color: white;
+    font-family: Dosis;
+    font-size: 14px;
+    font-weight: 600;
+    width: 150px;
+    cursor: pointer;
+    height: 32px;
+    background-color: #a147d4;
+    border-radius: 10px;
+    transition: 1s;
+  }
+  .post-box .image-box .read-content button:hover {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+  
