@@ -46,7 +46,7 @@ export class InfocollectComponent implements OnInit {
       ()=>{console.log("uploaded information "); }
     ).catch(()=>{ console.log("some error occured");
      })
-    this.route.navigate(['home']);
+    this.route.navigate(['/','home']);
   }
   ngOnInit() {
     
