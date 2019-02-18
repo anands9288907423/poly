@@ -2,18 +2,17 @@
     		
   <div class="card radius shadowDepth1">
     <div class="card__image border-tlr-radius" style="position:relative;">
-      <img src="../../assets/img/gangumahi.jpg" (click)="isloved()" alt="image" class="border-tlr-radius">
+      <img src="{{item.imgurl}}" (click)="isloved()" alt="image" class="border-tlr-radius">
       <img class="love" src="{{temp}}" style="width:30px;">
     </div>
 
     <div class="card__content card__padding">
       <div class="card__meta">
-        <a href="#">Building inaguration</a>
-                  <time>17th March</time>
+        <a href="#">{{item.title}}</a>
       </div>
 
       <article class="card__article">
-        <p>happy moments with teachers ... just freeking ...</p>
+        <p>{{item.post}}</p>
       </article>
     </div>
 
@@ -22,9 +21,36 @@
       <div class="card__author">
         <img src="../../assets/img/sreejesh.jpg" style="width:40px; height:40px" alt="user">
         <div class="card__author-content">
-          By <a href="#">Anand s</a>
+          By <a href="#">{{item.name}}</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- the add button -->
+
+<div class='wrap  bg-primary' [ngClass]="status ? 'active' : 'danger'">
+  <div class='content'>
+      <form>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="short text" (keyup)="abset($event)" >
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1"  >Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" (keyup)="bcset($event)" rows="3"></textarea>
+          </div>
+          <form>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload Your file</label>
+                <input type="file" name="upload" (change)="startUpload($event.target.files)"/>
+              </div>
+            </form>
+        </form>
+
+  </div>
+</div>
+<a class='button' (click)="status = !status" [ngClass]="status ? 'active' : 'danger'" style="
+background-image: url('https://image.flaticon.com/icons/svg/391/391057.svg'); width: 50px; height: 50px;"></a>
+

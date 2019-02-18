@@ -59,7 +59,7 @@ startUpload(event: FileList) {
   const customMetadata = { app: 'Created by anand s' };
 
   // The main task
-  this.task = this.storage.upload(path, file, { customMetadata });
+  this.task = this.storage.upload(path , file, { customMetadata });
   // Progress monitoring
   this.percentage = this.task.percentageChanges();
   this.snapshot = this.task.snapshotChanges().pipe(
