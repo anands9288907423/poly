@@ -11,14 +11,17 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class PostsService {
   postlist:Observable<Posts[]>;
   postcollection:AngularFirestoreCollection<Posts>;
-  constructor(afs:AngularFirestore) {
-    this.postcollection = afs.collection('posts');
-    this.postlist = this.postcollection.valueChanges();
+  constructor(public afs:AngularFirestore) {
+    
    }
    getposts(){
+    this.postcollection = this.afs.collection('posts');
+    this.postlist = this.postcollection.valueChanges();
      return this.postlist;
    }
    getcollection(){
+    this.postcollection = this.afs.collection('posts');
+    this.postlist = this.postcollection.valueChanges();
      return this.postcollection;
    }
 }
