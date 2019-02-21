@@ -50,7 +50,8 @@
           <form>
               <div class="form-group">
                 <label for="exampleFormControlFile1">Upload Your file</label>
-                <input type="file" name="upload" (change)="startUpload($event.target.files)"/>
+                <input type="file" accept="application/pdf,application/msword,
+                application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="upload" (change)="startUpload($event.target.files)"/>
               </div>
             </form>
         </form>

@@ -45,9 +45,10 @@ startUpload(event: FileList) {
   console.log(event);
   
   const file = event.item(0);
-
+  console.log(file.type.split('/')[0]);
+  
   // Client-side validation example
-  if (file.type.split('/')[0] !== 'image') {
+  if (file.type.split('/')[0] !== "application") {
     console.error('unsupported file type :( ');
     return;
   }

@@ -4,13 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { Router } from '../../../node_modules/@angular/router';
 import { UserinfoService } from './userinfo.service';
+import { CookieService } from 'angular2-cookie';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public user: Observable<firebase.User>;
   userDetails: firebase.User = null;
-  constructor(private firebaseAuth: AngularFireAuth,private router: Router) {
+  constructor(private firebaseAuth: AngularFireAuth,private router: Router ,private _cookieService:CookieService){
+
     this.user = firebaseAuth.authState;
   }
 
@@ -32,6 +34,7 @@ export class AuthService {
       new firebase.auth.GoogleAuthProvider()).then((data)=>{
         console.log(data);
         this.router.navigate(['/review',data.user.uid]);
+        this._cookieService.put("uuid",data.user.uid);
       });
   }
   login(email: string, password: string) {

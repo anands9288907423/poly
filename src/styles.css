@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.css';
-
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import 'assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css' ;
 @import 'assets/fonts/iconic/css/material-design-iconic-font.min.css' ;
 @import 'assets/vendor/animate/animate.css' ;

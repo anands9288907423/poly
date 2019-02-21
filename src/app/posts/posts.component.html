@@ -47,8 +47,17 @@
                 <input type="file" name="upload" (change)="startUpload($event.target.files)"/>
               </div>
             </form>
+            <button class="btn btn-primary mb-2" (click)="btnpst()">Post it</button>
         </form>
+        <div *ngIf="percentage | async as pct">
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" [style.width]="pct+'%'"></div>
+          </div>
 
+        </div>
+        <div class="alert alert-success" *ngIf="isupload"  role="alert">
+          Your post is published...
+        </div>
   </div>
 </div>
 <a class='button' (click)="status = !status" [ngClass]="status ? 'active' : 'danger'" style="
