@@ -29,7 +29,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PostsComponent } from './posts/posts.component';
 import { UploadPageComponent } from './upload-page/upload-page.component';
-import {CookieService} from 'angular2-cookie/core';
+import {CookieService , CookieOptions} from 'angular2-cookie/core';
 const appRoutes: Routes = [{
   path:'login',
   component : LoginComponent
@@ -103,7 +103,8 @@ const appRoutes: Routes = [{
     UserinfoService,
     PdfsService,
     ImguploadService,
-    CookieService
+    CookieService,
+     { provide: CookieOptions, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })
