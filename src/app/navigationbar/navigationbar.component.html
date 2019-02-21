@@ -4,7 +4,7 @@
           <ul class="nav navbar-nav mx-auto ">
               <li (click)="isCollapsed = !isCollapsed" class="nav-item" role="presentation"><a class="nav-link active" [routerLink]="['/home']">HOME</a></li>
               <li (click)="isCollapsed = !isCollapsed" class="nav-item" role="presentation"><a class="nav-link" [routerLink]="['/posts']">POSTS</a></li>
-              <li (click)="isCollapsed = !isCollapsed" class="nav-item" role="presentation"><a class="nav-link" [routerLink]="['/pdfs']" routerLinkActive=['router-link-active'] >NOTES</a></li>
+              <li (click)="isCollapsed = !isCollapsed" class="nav-item" role="presentation"><a class="nav-link" [routerLink]="['/pdfs']" routerLinkActive="router-link-active" >NOTES</a></li>
               <li (click)="isCollapsed = !isCollapsed" class="nav-item" role="presentation"><a class="nav-link" href="#">ANNOUNCEMENT</a></li>
           </ul>
           <ul class="nav navbar-nav">
@@ -13,6 +13,7 @@
       </div>
   </div>
 </nav>
+
 
 
 
