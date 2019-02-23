@@ -5,4 +5,5 @@ export interface Posts{
     name?:string;
     imgurl?:string;
     time?:string;
+    id ?:string;
 }

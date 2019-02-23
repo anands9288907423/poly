@@ -5,6 +5,9 @@ import { tap, finalize } from 'rxjs/operators';
 import { AngularFireUploadTask, AngularFireStorage } from 'angularfire2/storage';
 import { PostsService } from '../services/posts.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import 'rxjs/add/operator/map';
+import { CookieService } from 'angular2-cookie';
+import { defineBase } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-posts',
@@ -21,6 +24,9 @@ export class PostsComponent implements OnInit {
   title:string;
   poster:string;
   status:boolean = false;
+  postid:string;
+  uuid:any;
+  item:any;
 // Main task
 task: AngularFireUploadTask;
 
@@ -34,15 +40,18 @@ downloadURL: Observable<string>;
   file: File;
   isupload: boolean = false;
 
-  constructor(private post: PostsService ,private storage: AngularFireStorage , private db: AngularFirestore) { 
+  constructor(private db:AngularFirestore,private post: PostsService ,private storage: AngularFireStorage , private _cookieService:CookieService) { 
     post.getposts().subscribe((post)=>{
+      console.log(post);
         this.items = post;
-    })
+    });
+    this.uuid = this._cookieService.get('uuid');
   }
 
   ngOnInit() {
   }
-  isloved(){
+  isloved(item){
+    console.log(item);
     this.islove = (!this.islove);
     console.log("is loved called");
     console.log(this.islove);
@@ -52,7 +61,7 @@ downloadURL: Observable<string>;
     else{
       this.temp = this.emptypath;
     }
-    
+    this.db.collection('posts').doc(item.id).collection('likes').doc(this.uuid).set({isloved:this.islove});
   }
   abset(event){
     this.isupload =  false;
@@ -101,10 +110,12 @@ downloadURL: Observable<string>;
           this.downloadURL = this.storage.ref(path).getDownloadURL();
           console.log("ya data uploaded ");
           this.isupload =  true;
+
           this.downloadURL.subscribe((data)=>{
             this.post.getcollection().add({post:this.poster,
             title:this.title ,
-            imgurl:data
+            imgurl:data,
+            uid:this.uuid
         });     
           })
         })

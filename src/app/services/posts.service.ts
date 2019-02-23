@@ -16,8 +16,15 @@ export class PostsService {
    }
    getposts(){
     this.postcollection = this.afs.collection('posts');
-    this.postlist = this.postcollection.valueChanges();
+    this.postlist = this.postcollection.snapshotChanges().map(actions => {       
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Posts;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+       });
      return this.postlist;
+   
    }
    getcollection(){
     this.postcollection = this.afs.collection('posts');
