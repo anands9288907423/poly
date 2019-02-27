@@ -41,11 +41,15 @@ downloadURL: Observable<string>;
   isupload: boolean = false;
 
   constructor(private db:AngularFirestore,private post: PostsService ,private storage: AngularFireStorage , private _cookieService:CookieService) { 
-    post.getposts().subscribe((post)=>{
+    this.uuid = this._cookieService.get('uuid');
+    post.getposts()
+    .subscribe((post)=>{
       console.log(post);
         this.items = post;
+        console.log(post);
+        
     });
-    this.uuid = this._cookieService.get('uuid');
+    
   }
 
   ngOnInit() {

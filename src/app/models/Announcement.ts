@@ -5,4 +5,5 @@ export interface Announcement{
     photourl?:string;
     userid?:string;
     subtitle:string;
+    percentage:string;
 }

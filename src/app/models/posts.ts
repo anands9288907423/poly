@@ -6,4 +6,5 @@ export interface Posts{
     imgurl?:string;
     time?:string;
     id ?:string;
+    isloved?:boolean;
 }
