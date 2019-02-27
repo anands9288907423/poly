@@ -119,7 +119,8 @@ downloadURL: Observable<string>;
             this.post.getcollection().add({post:this.poster,
             title:this.title ,
             imgurl:data,
-            uid:this.uuid
+            uid:this.uuid,
+            name:this._cookieService.get('name')
         });     
           })
         })

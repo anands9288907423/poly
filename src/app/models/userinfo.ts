@@ -5,4 +5,6 @@ export interface UserInf{
     lastname?:string;
     phone?:string;
     about?:string;
+    email?:string;
+    name?:string;
 }
