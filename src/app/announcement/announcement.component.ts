@@ -3,6 +3,7 @@ import { AnnouncementService } from './../services/announcement.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { log } from 'util';
+import { CookieOptions, CookieService } from 'angular2-cookie';
 
 @Component({
   selector: 'app-announcement',
@@ -12,7 +13,11 @@ import { log } from 'util';
 export class AnnouncementComponent implements OnInit {
   ann: Announcement[];
   loading:boolean =true;
-  constructor(private announcement:AnnouncementService,private afs:AngularFirestore) { 
+  status: boolean=false;
+  title:string;
+  subtitle:string;
+  description:string;
+  constructor(private announcement:AnnouncementService,private afs:AngularFirestore ,private _cookieservice : CookieService) { 
     this.loading = true;
   }
 
@@ -27,5 +32,25 @@ export class AnnouncementComponent implements OnInit {
     console.log(dt,annid);
    this.afs.collection('announcement').doc('isagree').collection(annid).doc('agree').set({isagree:dt});
   }
-
+  toggleclass(){
+    this.status = (!this.status);
+  }
+  setpost(event, id){
+    if (id === 0) {
+        this.title = event;
+    } else if (id === 1) {
+      this.subtitle = event;
+    } else if (id === 3) {
+      this.description = event;
+    }
+  }
+  announce(){
+    console.log(this.title , this.subtitle ,this.description );
+    this.afs.collection('announcement').add({userid:this._cookieservice.get('name'),
+    id:this._cookieservice.get('uuid'),
+    title:this.title,
+    subtitle:this.subtitle,
+    message:this.description
+  });
+  }
 }
