@@ -8,6 +8,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import 'rxjs/add/operator/map';
 import { CookieService } from 'angular2-cookie';
 import { defineBase } from '@angular/core/src/render3';
+import { log } from 'util';
 
 @Component({
   selector: 'app-posts',
@@ -39,6 +40,7 @@ snapshot: Observable<any>;
 downloadURL: Observable<string>;
   file: File;
   isupload: boolean = false;
+  notlog: boolean = false;
 
 // tslint:disable-next-line: max-line-length
   constructor(private db:AngularFirestore,private post: PostsService ,private storage: AngularFireStorage , private _cookieService:CookieService) { 
@@ -143,5 +145,16 @@ downloadURL: Observable<string>;
     // })
   
     // The file's download URL
+  }
+  getstatus(){
+    console.log(this._cookieService.get('uuid'));
+    
+    if(this._cookieService.get('uuid')==undefined){
+      this.notlog =true;
+    }
+  else 
+  { 
+    this.status = !this.status;
+  }
   }
 }

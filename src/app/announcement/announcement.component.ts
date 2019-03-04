@@ -17,6 +17,7 @@ export class AnnouncementComponent implements OnInit {
   title:string;
   subtitle:string;
   description:string;
+  notlog:boolean = false;
   constructor(private announcement:AnnouncementService,private afs:AngularFirestore ,private _cookieservice : CookieService) { 
     this.loading = true;
   }
@@ -33,7 +34,10 @@ export class AnnouncementComponent implements OnInit {
    this.afs.collection('announcement').doc('isagree').collection(annid).doc('agree').set({isagree:dt});
   }
   toggleclass(){
-    this.status = (!this.status);
+    if(this._cookieservice.get('uuid')==undefined){
+      this.notlog = true;
+    }
+    else{this.status = (!this.status);}
   }
   setpost(event, id){
     if (id === 0) {

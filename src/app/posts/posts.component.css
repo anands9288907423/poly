@@ -239,5 +239,11 @@ h1 {
 	transform: rotate(135deg);
 	transition: transform 0.5s;
   }
-  
+	
+	/* custom */
+.laydown{
+	position: fixed;
+	bottom: 15%;
+	width: 100%;
+}
   
