@@ -40,6 +40,7 @@ downloadURL: Observable<string>;
   file: File;
   isupload: boolean = false;
 
+// tslint:disable-next-line: max-line-length
   constructor(private db:AngularFirestore,private post: PostsService ,private storage: AngularFireStorage , private _cookieService:CookieService) { 
     this.uuid = this._cookieService.get('uuid');
     post.getposts()
