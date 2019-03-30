@@ -33,7 +33,7 @@ export class AuthService {
     return this.firebaseAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()).then((data)=>{
         console.log(data);
-        this.router.navigate(['/review',data.user.uid]);
+        this.router.navigate(['/review']);
         this._cookieService.put("uuid",data.user.uid);
       });
   }

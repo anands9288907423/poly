@@ -23,6 +23,7 @@ export class AnnouncementComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.announcement.getItems().subscribe(data =>{
       console.log(data);
       this.ann = data;
@@ -34,10 +35,15 @@ export class AnnouncementComponent implements OnInit {
    this.afs.collection('announcement').doc('isagree').collection(annid).doc('agree').set({isagree:dt});
   }
   toggleclass(){
+    
+    
     if(this._cookieservice.get('uuid')==undefined){
       this.notlog = true;
+      console.log("passed1");
     }
-    else{this.status = (!this.status);}
+    else{
+      console.log(this.status);
+      this.status = (!this.status);}
   }
   setpost(event, id){
     if (id === 0) {

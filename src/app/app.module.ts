@@ -30,6 +30,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PostsComponent } from './posts/posts.component';
 import { UploadPageComponent } from './upload-page/upload-page.component';
 import {CookieService , CookieOptions} from 'angular2-cookie/core';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {ROUTER_PROVIDERS} from 'angular2/router';
 const appRoutes: Routes = [{
   path:'login',
   component : LoginComponent
@@ -41,7 +43,7 @@ const appRoutes: Routes = [{
   component : BottomComponent
 },
 {
-  path : 'review/:uid',
+  path : 'review',
   component : InfocollectComponent
 },
 {
@@ -104,7 +106,9 @@ const appRoutes: Routes = [{
     PdfsService,
     ImguploadService,
     CookieService,
-     { provide: CookieOptions, useValue: {} }
+     { provide: CookieOptions, useValue: {} },
+     ROUTER_PROVIDERS,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

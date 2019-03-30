@@ -30,7 +30,7 @@ export class PostsComponent implements OnInit {
   item:any;
 // Main task
 task: AngularFireUploadTask;
-
+cookie:string;
  // Progress monitoring
 percentage: Observable<number>;
 
@@ -56,6 +56,7 @@ downloadURL: Observable<string>;
   }
 
   ngOnInit() {
+    this.cookie = this._cookieService.get('uuid');
   }
   isloved(item){
     console.log(item);
@@ -149,7 +150,7 @@ downloadURL: Observable<string>;
   getstatus(){
     console.log(this._cookieService.get('uuid'));
     
-    if(this._cookieService.get('uuid')==undefined){
+    if(this.cookie==undefined){
       this.notlog =true;
     }
   else 
