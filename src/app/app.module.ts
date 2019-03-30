@@ -31,7 +31,7 @@ import { PostsComponent } from './posts/posts.component';
 import { UploadPageComponent } from './upload-page/upload-page.component';
 import {CookieService , CookieOptions} from 'angular2-cookie/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import {ROUTER_PROVIDERS} from 'angular2/router';
+import {ɵROUTER_PROVIDERS} from '@angular/router';
 const appRoutes: Routes = [{
   path:'login',
   component : LoginComponent
@@ -107,7 +107,7 @@ const appRoutes: Routes = [{
     ImguploadService,
     CookieService,
      { provide: CookieOptions, useValue: {} },
-     ROUTER_PROVIDERS,
+      ɵROUTER_PROVIDERS,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
